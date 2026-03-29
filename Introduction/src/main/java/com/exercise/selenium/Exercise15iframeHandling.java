@@ -13,10 +13,30 @@ public class Exercise15iframeHandling {
 
         driver.findElement(By.xpath("//a[.='Nested Frames']")).click();
         System.out.println(driver.findElements(By.tagName("frame")).size());
+
+        driver.switchTo().frame("frame-top");
+        driver.switchTo().frame("frame-left");
+        System.out.println(driver.findElement(By.tagName("body")).getText());
+
+        driver.switchTo().defaultContent();
+
         driver.switchTo().frame("frame-top");
         driver.switchTo().frame("frame-middle");
-        WebElement middleFrameText = driver.findElement(By.id("content"));
-        System.out.println(middleFrameText.getText());
+        System.out.println(driver.findElement(By.id("content")).getText());
+
+        driver.switchTo().defaultContent();
+
+        driver.switchTo().frame("frame-top");
+        driver.switchTo().frame("frame-right");
+        System.out.println(driver.findElement(By.tagName("body")).getText());
+
+        driver.switchTo().defaultContent();
+
+        driver.switchTo().frame("frame-bottom");
+        System.out.println(driver.findElement(By.tagName("body")).getText());
+
+        //WebElement middleFrameText = driver.findElement(By.id("content"));
+        //System.out.println(middleFrameText.getText());
 
     }
 }
